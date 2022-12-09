@@ -1,0 +1,74 @@
+#input example
+# 100000 (income)
+# 10000 (outcome)
+# single (status)
+# 0 (children)
+# 1 (parent)
+# 1 (disable)
+
+#input income
+inc = int(input('type your income : '))
+#all year income
+ayinc = inc*12
+
+#other income
+#oth = int(input())
+#all year other income
+#ayoth = oth*12
+
+#outcome
+out = int(input('type your outcome : '))
+#all year outcome
+ayout = out*12
+
+#=================================================================================
+
+#tax deduction
+status = input()
+children = input().split()
+if status == 'single' :
+    deduction = 60000
+    parent = int(input())*30000
+    disable = int(input())*60000
+    moneysoodti = (ayinc-ayout-(deduction+parent+disable))
+    
+elif status == 'married with no income' :
+    deduction = 60000+30000
+    parent = int(input())*30000
+    disable = int(input())*60000
+    if int(children[1]) < 2561 :
+        kidde = int(children[0])*30000
+    elif int(children[1]) > 2561 :
+        kidde = int(children[0])*60000
+        moneysoodti = (ayinc-ayout-(deduction+parent+disable+kidde))
+
+elif status == 'married with income' :
+    deduction = 60000
+    parent = int(input())*30000
+    disable = int(input())*60000
+    if int(children[1]) < 2561 :
+        kidde = int(children[0])*30000
+    elif int(children[1]) > 2561 :
+        kidde = int(children[0])*60000
+        moneysoodti = (ayinc-ayout-(deduction+parent+disable+kidde))
+
+#=================================================================================
+
+#tax calculation
+if moneysoodti <= 150000:  
+    tax = 0
+elif 300000 >= moneysoodti > 150000 : 
+    tax = (moneysoodti - 150000) * 0.05
+elif 500000 >= moneysoodti > 300000 : 
+    tax = (moneysoodti - 300000) * 0.10 + 7500 
+elif 750000 >= moneysoodti > 500000 : 
+    tax = (moneysoodti - 500000) * 0.15 + 27500 
+elif 1000000 >= moneysoodti > 750000 : 
+    tax = (moneysoodti - 750000) * 0.20 + 65000 
+elif 2000000 >= moneysoodti > 1000000 : 
+    tax = (moneysoodti - 1000000) * 0.25 + 115000 
+elif 5000000 >= moneysoodti > 2000000 :
+    tax = (moneysoodti - 2000000) * 0.30 + 365000
+elif moneysoodti > 5000000 :
+    tax = (moneysoodti - 5000000) * 0.35 + 1265000
+print(tax)
