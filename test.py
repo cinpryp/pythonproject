@@ -16,6 +16,9 @@ ayout = out*12
 #=================================================================================
 
 #tax deduction
+
+
+#personalnfamily
 status = input('type your status(single/married with income,no income) : ')
 if status == 'single' :
     deduction = 60000
@@ -96,7 +99,7 @@ elif pen <= ayinc*0.15 and pen > 200000 :
 elif pen >= ayinc*0.15 and pen < 200000 :
     pen == pen
 else : pen == pen
-allinvest = rmf + ssf +pen
+allinvest = rmf + ssf + pen
 if allinvest > 500000 :
     allinvest = 500000
 else : allinvest = allinvest
@@ -106,13 +109,13 @@ alll = moneysoodti - lh - ph - se - allinvest
 #donation
 normal = int(input('type your normal donation : '))
 if normal > alll*0.1 :
-    normal = alll*0.1
-else : normal = normal
+    normal == alll*0.1
+else : normal == normal
 ed = int(input('type your education and sport donation : '))
 eddy = ed*2
 if eddy > alll*0.1 :
-    eddy = alll*0.1
-else : eddy = eddy
+    eddy == alll*0.1
+else : eddy == eddy
 
 lastmoney = alll - normal - eddy
    
@@ -135,4 +138,23 @@ elif 5000000 >= lastmoney > 2000000 :
     tax = (lastmoney - 2000000) * 0.30 + 365000
 elif lastmoney > 5000000 :
     tax = (lastmoney - 5000000) * 0.35 + 1265000
-print("tax = ",tax)
+print("tax = ", tax)
+
+#suggestion
+
+if tax != 0 :
+    print('you can gain further tax reduction by')
+if lh < 100000 and tax != 0 :
+    print('>>invest in lifesave or health insurance',100000 - lh,'more')
+if social < 6300 and tax != 0  :
+    print('>>invest in social security insurance',6300 - social,'more')
+if ph < 15000 and tax != 0 :
+    print('>>invest in parent health insurance',15000 - ph,'more')
+if se < 100000 and tax != 0 :
+    print('>>invest in social enterprise',100000 - se,'more')
+if allinvest < 500000 and tax != 0 :
+    print('>>invest in investment category',500000 - allinvest,'more')
+if normal < alll*0.1 and tax != 0 :
+    print('>>invest in normal donation',round(alll*0.1 - normal, 2),'more')
+if eddy < alll*0.1 and tax != 0 :
+    print('>>invest in education and sport donation',round(alll*0.1 - eddy, 2) ,'more')
